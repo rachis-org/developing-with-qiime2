@@ -1,7 +1,7 @@
 (howto-raise-visible-warning)=
 # Raising a Visible Warning
 
-Warnings raised by the Python `warning` library are suppressed by the QIIME2 framework by defualt. In order to make sure the warnings raised by your plugin are visible on the command line you must use the `RachisWarning` subclass. This class can be imported from the QIIME2 framework, specifically from `qiime2.core.exceptions`. Below is an excerpt from a [QIIME2 plugin registered in `q2-feature-table` importing and raising a `RachisWarning`.](https://github.com/qiime2/q2-feature-table/blob/b6a312e612338db0f69c97641372e7f0005b43f5/q2_feature_table/_merge.py#L90C12-L93C14)
+Warnings raised by the Python `warning` library are suppressed by defualt when using . In order to make sure the warnings raised by your plugin are visible in the CLI you must use the `RachisWarning` subclass. This class can be imported from the QIIME2 framework, specifically from `qiime2.core.exceptions`. Below is an [excerpt](https://github.com/qiime2/q2-feature-table/blob/b6a312e612338db0f69c97641372e7f0005b43f5/q2_feature_table/_merge.py#L90C12-L93C14) from from the `q2-feature-table` plugin that raises such a `RachisWarning`.
 
 ```python
 from qiime2.core.excpetions import RachisWarnings
@@ -24,5 +24,4 @@ def merge_taxa(data: pd.DataFrame) -> pd.DataFrame:
             )
 ```
 This plugin has a `RachisWarning` raised when the taxonomies have different depths. Since the `RachisWarning` is a subclass of `UserWarning` from the
-built in Python `warnings` library, on which you can find more in depth documentation [here,](https://docs.python.org/3/library/warnings.html) they behave
-completely the same outside of command line visibility.
+built in Python `warnings` [library](https://docs.python.org/3/library/warnings.html) they behave completely the same outside of command line visibility.
