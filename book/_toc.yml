@@ -45,6 +45,7 @@ parts:
             - file: plugins/how-to-guides/usage-examples
             - file: plugins/how-to-guides/format-validation-levels
             - file: plugins/how-to-guides/handle-exceptions-in-parallel-pipelines
+            - file: plugins/how-to-guides/raise-visible-warning
         - file: plugins/explanations/intro
           sections:
             - file: plugins/explanations/actions
