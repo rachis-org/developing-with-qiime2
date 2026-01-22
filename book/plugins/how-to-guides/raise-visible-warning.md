@@ -1,7 +1,7 @@
 (howto-raise-visible-warning)=
 # Raising a Visible Warning
 
-Warnings raised by the Python `warning` library are suppressed by defualt when using . In order to make sure the warnings raised by your plugin are visible in the CLI you must use the `RachisWarning` subclass. This class can be imported from the QIIME2 framework, specifically from `qiime2.core.exceptions`. Below is an [excerpt](https://github.com/qiime2/q2-feature-table/blob/b6a312e612338db0f69c97641372e7f0005b43f5/q2_feature_table/_merge.py#L90C12-L93C14) from from the `q2-feature-table` plugin that raises such a `RachisWarning`.
+Warnings raised by the Python `warning` library are suppressed by defualt when using the command line interface (CLI). In order to make sure the warnings raised by your plugin are visible in the CLI you must use the `RachisWarning` subclass. This class can be imported from the QIIME2 framework, specifically from `qiime2.core.exceptions`. Below is an [excerpt](https://github.com/qiime2/q2-feature-table/blob/b6a312e612338db0f69c97641372e7f0005b43f5/q2_feature_table/_merge.py#L90C12-L93C14) from from the `q2-feature-table` plugin that raises such a `RachisWarning`.
 
 ```python
 from qiime2.core.excpetions import RachisWarnings
