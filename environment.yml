@@ -1,6 +1,6 @@
 name: developing-with-qiime2
 channels:
-- https://packages.qiime2.org/qiime2/2026.1/tiny/passed
+- https://packages.qiime2.org/qiime2/2026.4/tiny/passed
 - conda-forge
 - bioconda
 dependencies:
