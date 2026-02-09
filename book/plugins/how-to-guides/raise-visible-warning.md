@@ -8,7 +8,7 @@ This class can be imported from the QIIME2 framework, specifically from `qiime2.
 Below is an [excerpt](https://github.com/qiime2/q2-feature-table/blob/b6a312e612338db0f69c97641372e7f0005b43f5/q2_feature_table/_merge.py#L90C12-L93C14) from the `q2-feature-table` plugin that may issue such a warning.
 
 ```python
-from qiime2.core.excpetions import RachisWarnings
+from qiime2.core.exceptions import RachisWarning
 
 def merge_taxa(data: pd.DataFrame) -> pd.DataFrame:
     if len(data) > 1:
