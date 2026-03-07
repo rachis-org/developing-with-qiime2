@@ -74,7 +74,7 @@ Miscellaneous:
   --help                  Show this message and exit.
 ```
 
-If you'd like to try the action out, you can call your `duplicate-table` action on any QIIME 2 `FeatureTable[Frequency]` artifact (e.g., you can download one from the QIIME 2 user documentation with [this link](https://gut-to-soil-tutorial.readthedocs.io/en/stable/data/gut-to-soil/asv-table.qza)).
+If you'd like to try the action out, you can call your `duplicate-table` action on any QIIME 2 `FeatureTable[Frequency]` artifact (e.g., you can download one from the QIIME 2 user documentation with [this link](https://gut-to-soil-tutorial.readthedocs.io/en/latest/data/gut-to-soil/asv-table.qza)).
 Load your duplicated table with [QIIME 2 View](https://view.qiime2.org), and poke through its Provenance to see how data provenance is recorded for your plugin.
 
 ## Initialize a git repository (optional but recommended)
