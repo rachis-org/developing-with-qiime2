@@ -357,7 +357,7 @@ The {term}`Signature`-specific fields are defined as follows:
 - `signer_name` and `signer_email` refer to the GnuPG uid credentials associated with the keypair used for creating the {term}`Signature`.
 - `fingerprint` refers to the fingerprint associated with the GnuPG keypair used for creating the {term}`Signature`.
 
-More details on {term}`Signature` creation and verification, along with information on installing and using GnuPG for this purpose, can be found in [How to sign and verify Results](https://use.qiime2.org/en/latest/how-to-guides/sign-and-verify-artifacts.html).
+More details on {term}`Signature` creation and verification, along with information on installing and using GnuPG for this purpose, can be found in [How to sign and verify Results](https://use.qiime2.org/en/2026.1/how-to-guides/sign-and-verify-artifacts.html).
 
 ### Archive Version 7.2
 Archive Version 7.2 development is currently being planned.
