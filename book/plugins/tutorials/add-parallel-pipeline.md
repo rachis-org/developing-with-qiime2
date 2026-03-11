@@ -269,7 +269,7 @@ las_results, = combine_action(las_results)
 
 Under the hood is where the magic happens here.
 Because we're iterating over a collection of QIIME 2 Artifacts (the `for` loop above) in a QIIME 2 `Pipeline`, each `las_result` object is a proxy for a real QIIME 2 artifact.
-The jobs to create them are distributed as indicated in the user's [QIIME 2 parallel configuration](https://use.qiime2.org/en/stable/references/parallel-configuration.html).
+The jobs to create them are distributed as indicated in the user's [QIIME 2 parallel configuration](https://use.qiime2.org/en/2026.1/references/parallel-configuration.html).
 The code continues executing as if these were real Artifacts, not proxy Artifacts, until something is needed from them.
 At that point, the code will block (i.e., wait) until the proxy Artifacts become real Artifacts, and then continue processing.
 
