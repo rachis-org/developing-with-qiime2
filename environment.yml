@@ -7,6 +7,6 @@ dependencies:
   - qiime2-tiny
   - pip
   - pip:
-    - jupyter-book
+    - jupyter-book<2
     - sphinxcontrib-mermaid
     - q2doc @ git+https://github.com/qiime2/sphinx-ext-qiime2.git@master
