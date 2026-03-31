@@ -50,19 +50,19 @@ Rpy2 is a Python package that allows users to seamlessly call R software from wi
 Where the separated approach is best suited for stand-alone, mature R software that is interfaced with relatively seldomly and in a well-defined manner, the embedded approach allows a more interactive and "scripting" like experience.
 This is because rpy2 offers a vast set of tools for calling R code, including a functionality to execute any arbitrary R expression, from within Python.
 See the rpy2 documentation for details.
-It's important to note however that rpy2 is equally as capable of interfacing with mature APIs of standalone R packages, and can be used to do so without writing any R code.
+It's important to note that rpy2 is equally as capable of interfacing with mature APIs of standalone R packages, and can be used to do so without writing any R code.
 
 As a concrete example of this approach, we'll refer to the `q2-qsip2` plugin, which can be visited [here](https://github.com/caporaso-lab/q2-qsip2).
 This plugin wraps the qSIP2 R package, which is available [here](https://github.com/jeffkimbrel/qSIP2).
 The qSIP2 package allows users to analyze the results of quantitative [stable isotope probing](https://en.wikipedia.org/wiki/Stable-isotope_probing) projects.
-The embedded approach was considered more desirable in this case because the qSIP2 package is less mature than e.g. DADA2, and was still under development at the time of creating the plugin.
+The embedded approach was considered more desirable in this case because the qSIP2 package is less mature than e.g. DADA2, and was still under development at the time the plugin was created.
 Such software packages are less likely to have stable APIs and so being able to interface with the package at a fine-grained level is an important ability that rpy2 gives us.
 Furthermore, such software is more likely to have bugs or small pieces of missing functionality.
 Here again, the embedded approach is advantageous in that it lets us write small amounts of R code to patch gaps in functionality, directly in Python.
 Such gaps in functionality can be dealt with on the fly instead of needing separately maintained R scripts.
 
 The rpy2 library can greatly simplify data passing between Python and R in certain situations.
-Whereas in the separated approach complex or large data must be passed using the filesystem explicitly, rpy2 has built-in ways of converting common Python representations of certain data types to their R equivalents, and back again.
+Whereas in the separated approach complex or large data must be passed using the filesystem explicitly, rpy2 has built-in ways of converting common Python data types to their R equivalents, and back again.
 A great example of this is the dataframe type: rpy2 can convert most `pandas` dataframes to an equivalent R `data.frame` and back, with only a simple context manager.
 The rpy2 library also automatically converts all primitive and many collection data types between the two languages.
 
@@ -99,7 +99,7 @@ requirements:
   - bioconductor-dada2
 ```
 
-This informs conda that the DADA2 package is a requirement that the package needs to execute properly.
+This informs conda that the DADA2 package is a requirement that the plugin needs to execute properly.
 This means conda will install it at the same time the Python package representing the plugin is installed.
 Note that only conda packages that are hosted either by the `bioconda` or by the `conda-forge` channels can be included in this fashion.
 
@@ -114,7 +114,7 @@ However, this can be a complex process, so it will not be discussed further here
 Documentation of this process is available [here](https://docs.conda.io/projects/conda-build/en/latest/user-guide/tutorials/building-conda-packages.html).
 
 The other way is to include the necessary shell commands for installing the R dependency in the Makefile of the plugin.
-This a flexible approach in that one can add any shell command that results in the R dependency being installed, including e.g. `Rscript -e "install.packages..."`, `git clone ...`, and so on.
+This is a flexible approach in that one can add any shell command that results in the R dependency being installed, including e.g. `Rscript -e "install.packages..."`, `git clone ...`, and so on.
 As an example of this approach we'll refer again to the `q2-qsip2` plugin.
 In the Makefile of that plugin, which can be viewed [here](https://github.com/caporaso-lab/q2-qsip2/blob/main/Makefile), we can see that underneath the `install` target we install the qSIP2 R package using the `remotes` library's `install_github` function, via the `Rscript` shell command.
 An important consideration that needs to be made when creating such an installation command is that any shell command given in the `install` target must be guaranteed to be available on the installer's (user's) system, or the dependency will not be able to be installed and the plugin will not be usable.
