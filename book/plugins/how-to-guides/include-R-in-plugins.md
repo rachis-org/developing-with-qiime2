@@ -17,8 +17,9 @@ To make it available to QIIME 2 users, the following steps were followed.
 
 First, the DADA2 dependency was specified in the `conda-recipe/meta.yaml` file.
 See the documentation about QIIME 2 plugin package structures [here](https://develop.qiime2.org/en/latest/plugins/explanations/package-structure.html#plugin-package-explanation) for more information.
-The DADA2 software has a conda package available through [bioconductor](https://www.bioconductor.org) which greatly simplifies the process of dependency installation.
-Conda packages should always be the preffered method of dependency installation.
+The DADA2 software has a conda package available through [bioconductor](https://www.bioconductor.org).
+Hosting an R package on a conda channel greatly simplifies the process of dependency installation.
+Therefore, conda packages should be the preferred method of dependency installation.
 However, of course not all R software packages that one might wish to use will have a conda package available.
 Alternative ways of packaging R dependencies are discussed below.
 
@@ -44,7 +45,7 @@ However, common patterns include using temporary directories and files with the 
 ### The Embedded Approach
 The embedded approach refers in essence to interacting with R software directly and repeatedly, from Python.
 The tool that will be discussed here that allows one to do this is the [rpy2 software](https://rpy2.github.io).
-Rpy2 is a python package that allows users to seamlessly call R software from within python by running an R interpreter in the background, translating Python API calls into R, and returning the results back into the Python interpreter.
+Rpy2 is a Python package that allows users to seamlessly call R software from within Python by running an R interpreter in the background, translating Python API calls into R, and returning the results back into the Python interpreter.
 
 Where the separated approach is best suited for stand-alone, mature R software that is interfaced with relatively seldomly and in a well-defined manner, the embedded approach allows a more interactive and "scripting" like experience.
 This is because rpy2 offers a vast set of tools for calling R code, including a functionality to execute any arbitrary R expression, from within Python.
@@ -99,7 +100,7 @@ requirements:
 ```
 
 This informs conda that the DADA2 package is a requirement that the package needs to execute properly.
-This means conda will install it at the same time the python package representing the plugin is installed.
+This means conda will install it at the same time the Python package representing the plugin is installed.
 Note that only conda packages that are hosted either by the `bioconda` or by the `conda-forge` channels can be included in this fashion.
 
 ### When a Conda Package is Not Available
@@ -124,4 +125,4 @@ Special considerations need to made for testing when R software is included in a
 Generally speaking, any R software that is tested elsewhere (e.g. in a package that is being included as a dependency) does not need to be retested in the plugin.
 However, any R software that is written specifically for the plugin, or any R software that is being migrated into a plugin for ongoing maintenance should be tested in the plugin.
 Tests written in R should be called through the `test` target in the Makefile, using whatever shell command is necessary to do so.
-Tests written in python should be done so using `pytest` in the typical testing locations, with no Makefile modifications necessary.
+Tests written in Python should be done so using `pytest` in the typical testing locations, with no Makefile modifications necessary.
