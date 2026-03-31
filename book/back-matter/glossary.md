@@ -5,6 +5,10 @@ Action
   A generic term to describe a {term}`Method`, {term}`Visualizer`, or {term}`Pipeline`.
   Actions accept parameters and/or {term}`Artifacts <Artifact>` and/or {term}`Metadata`) as input, and generate one or more {term}`Results <Result>` as output.
 
+Annotation
+  Additional information that can be attached to a QIIME 2 {term}`Result`, such as a text file or cryptographic signature.
+  See {term}`Note` and {term}`Signature` for more information on the respective {term}`Annotation` types that have been implemented, and what they can contain.
+
 Archive
   The directory structure of a QIIME 2 {term}`Result`.
   Contains *at least* a root directory (named by {term}`UUID`) and a ``VERSION`` file within that directory.
@@ -24,7 +28,7 @@ Collection
   These can be used as {term}`Input`, {term}`Parameter`, and {term}`Output` {term}`Types <Type>`.
 
 Conda metapackage
-  A metapackage is a package  with no  files,  only  metadata.
+  A metapackage is a package with no files, only metadata.
   They are typically used to collect several packages together into a single package via dependencies.
   ([source](https://docs.conda.io/projects/conda-build/en/stable/resources/commands/conda-metapackage.html))
 
@@ -78,6 +82,10 @@ Metadata
 Method
   A method accepts some combination of QIIME 2 {term}`artifacts <Artifact>` and {term}`parameters <Parameter>` as {term}`input`, and produces one or more QIIME 2 artifacts as {term}`output`.
 
+Note
+  A type of {term}`Annotation` that can be added to a QIIME 2 {term}`Result`.
+  This type of {term}`Annotation` can accept inline text or a path to a file whose contents will be written to the associated {term}`Result`, with a limit of 10 MiB.
+
 Output
   Objects returned by an {term}`action`. Can be {term}`artifact(s) <Artifact>` or {term}`visualization(s) <Visualization>`.
 
@@ -126,6 +134,11 @@ Semantic Type
   An identifier that is used to describe what some data is intended to represent, and when and where they can be used.
   When associated with a {term}`directory format`, the combination defines an {term}`artifact class`.
   These types may be extended by {term}`plugins<Plugin>`.
+
+Signature
+  A type of {term}`Annotation` that can be added to a QIIME 2 {term}`Result`.
+  This {term}`Annotation` contains a cryptographic signature, providing support to 'self-sign' QIIME 2 {term}`Results <Result>`.
+  This allows for identity confirmation for who created a particular {term}`Result`.
 
 Single-Use Plugin (SUP)
   A plugin that is intended for one specific use case, such as generating figures for a single manuscript, as opposed to a plugin that is intended for general widespread usage.

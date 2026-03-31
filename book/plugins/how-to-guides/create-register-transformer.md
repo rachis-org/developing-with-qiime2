@@ -4,7 +4,7 @@
 Transformers are often short Python functions that convert one file format or data type to another file format or data type.
 These functions are never directly called by users or developers, so by convention they don't get informative function names (as the annotations of the input and output provide complete detail on what they do).
 
-Here's are two example `transformer` that are [defined and registered in `q2-types`](https://github.com/qiime2/q2-types/blob/e25f9355958755343977e037bbe39110cfb56a63/q2_types/distance_matrix/_transformer.py#L16):
+Here are two example `transformer` that are [defined and registered in `q2-types`](https://github.com/qiime2/q2-types/blob/e25f9355958755343977e037bbe39110cfb56a63/q2_types/distance_matrix/_transformer.py#L16):
 
 ```python
 import skbio
