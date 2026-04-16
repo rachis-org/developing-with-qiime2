@@ -99,6 +99,7 @@ parts:
     - caption: "Documentation 📚"
       chapters:
           - file: docs/intro
+          - file: docs/xref-reference
             sections:
                 - file: docs/user-documentation
                 - file: docs/developer-documentation
