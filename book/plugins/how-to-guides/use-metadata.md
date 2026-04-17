@@ -74,7 +74,7 @@ All types of data columns can be instantiated as `CategoricalMetadataColumn` - v
 
 ## How can the Metadata API Help Me?
 
-The `qiime2.metadata.Metadata` API has many interesting features - here are some of the more commonly utlitized elements amongst the plugins within the Amplicon {term}`Distribution`.
+The `qiime2.metadata.Metadata` API has many interesting features - here are some of the more commonly utlitized elements amongst the plugins within the qiime2 {term}`Distribution`.
 
 ### Merging Metadata
 
@@ -124,4 +124,3 @@ This will generate an artifact containing the metadata that your function provid
 `ImmutableMetadata` artifacts can be [viewed as `Metadata`](artifacts-as-metadata), so they can be used anywhere that a typical metadata `.tsv` file can be provided as input in QIIME 2.
 This includes q2-metadata's `tabulate` visualizer.
 Additionally, if you want to obtain a `.tsv` file representation of an `ImmutableMetadata` artifact, you can [export it](https://docs.qiime2.org/2024.2/tutorials/exporting/).
-

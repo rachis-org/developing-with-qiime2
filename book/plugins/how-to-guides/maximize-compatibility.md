@@ -15,7 +15,7 @@ The Caporaso Lab is not taking on new responsibility for distributing plugins ri
 
 You can consider the existing distributions to be foundations that you can build on, or you can create and distribute your own conda metapackages.
 Some guidance on each of these approaches:
-   - Your install instructions can indicate that a user should install whichever distribution you depend on (e.g., `tiny`, `amplicon`, or `moshpit`) and then illustrate how to install your plugin(s) in that environment however it makes sense (e.g., `conda` or `pip`). Complete install instructions are drafted for you in the `README.md` of plugins that you build using our template (see [](plugin-from-template)).
+   - Your install instructions can indicate that a user should install whichever distribution you depend on (e.g., `tiny`, `qiime2`, `moshpit`, etc) and then illustrate how to install your plugin(s) in that environment however it makes sense (e.g., `conda` or `pip`). Complete install instructions are drafted for you in the `README.md` of plugins that you build using our template (see [](plugin-from-template)).
    - Alternatively, you can compose and share your own distribution of plugins (e.g., building from the `tiny` distribution) that captures the set of functionality you’d like to share.
 
 Either of these approaches is totally fine, with the following caveats.

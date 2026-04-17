@@ -119,7 +119,7 @@ With the bracketed terms defined as:
 - `<next-epoch>`: the next QIIME 2 release epoch.
 QIIME 2 releases are scheduled for the first Wednesday of April and October, so this value is always predictable.
 For example, if the most recent release was 2024.10, your `<next-epoch>` would be 2025.4.
-- `<target-distribution>`: the QIIME 2 distribution that your plugin should be installed under (e.g., `amplicon` or `moshpit`).
+- `<target-distribution>`: the rachis distribution that your plugin should be installed under (e.g., `qiime2` or `moshpit`).
 - `<target-branch>` (optional): the branch of your repository that testing will be performed against. If not specified, this will default to your repository's *Default branch* (e.g., `main`). If you don't include this, you should leave off the `@` symbol following `.git`.
 
 You can set up any additional GHAs on your repository that you feel will be beneficial to your plugin and general development workflow.

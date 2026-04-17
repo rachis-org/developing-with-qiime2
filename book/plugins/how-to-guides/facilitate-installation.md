@@ -1,3 +1,5 @@
+/// TODO: this needs a bit of an overhaul to handle our updated naming scheme (to prevent confusion for people moving forward)
+
 (facilitating-installation)=
 # Facilitating installation of your plugin for users
 
