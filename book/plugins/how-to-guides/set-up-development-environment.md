@@ -33,7 +33,7 @@ conda update conda
 The QIIME 2 "Tiny Distribution" is a minimal set of QIIME 2 functionality for building and using plugins through the QIIME 2 command line, and is intended for use by developers who want a minimal QIIME 2 environment to work in.
 
 ```{note}
-We recommend starting your development with the "Tiny Distribution", unless you specifically need plugins that are installed in other QIIME 2 distributions, such as the Amplicon Distribution or MOSHPIT (previously known as the Metagenome Distribution), in which case see [](other-distros).
+We recommend starting your development with the "Tiny Distribution", unless you specifically need plugins that are installed in other rachis distributions, such as the QIIME 2 Distribution or MOSHPIT (previously known as the Metagenome Distribution), in which case see [](other-distros).
 ```
 
 ```{note}
@@ -44,28 +44,27 @@ Things change relatively quickly with development environments, so it doesn't hu
 
 
 `````{tab-set}
-````{tab-item} macOS
+````{tab-item} macOS (x86_64)
 ```bash
 __Q2DEV_ENV_NAME=q2dev-tiny-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/qiime2-tiny-macos-latest-conda.yml
+conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-osx-64-conda.yml
 conda activate $__Q2DEV_ENV_NAME
 ```
 ````
 
-````{tab-item} Linux
+````{tab-item} Linux (x86_64)
 ```bash
 __Q2DEV_ENV_NAME=q2dev-tiny-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/qiime2-tiny-ubuntu-latest-conda.yml
+conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-linux-64-conda.yml
 conda activate $__Q2DEV_ENV_NAME
 ```
 ````
 
-````{tab-item} macOS (Apple Silicon)
+````{tab-item} macOS (ARM64)
 ```bash
 __Q2DEV_ENV_NAME=q2dev-tiny-$(date "+%Y-%m-%d")
-CONDA_SUBDIR=osx-64 conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/qiime2-tiny-macos-latest-conda.yml
+conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-osx-arm64-conda.yml
 conda activate $__Q2DEV_ENV_NAME
-conda config --env --set subdir osx-64
 ```
 ````
 `````
@@ -136,29 +135,29 @@ make test
 (other-distros)=
 ## Installing other QIIME 2 distributions
 
-### Amplicon distribution
+### qiime2 (previously known as the *Amplicon distribution*)
 
 `````{tab-set}
-````{tab-item} macOS
+````{tab-item} macOS (x86_64)
 ```bash
-__Q2DEV_ENV_NAME=q2dev-amplicon-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/qiime2-amplicon-macos-latest-conda.yml
+__Q2DEV_ENV_NAME=q2dev-qiime2-$(date "+%Y-%m-%d")
+conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-osx-64-conda.yml
 conda activate $__Q2DEV_ENV_NAME
 ```
 ````
 
-````{tab-item} Linux
+````{tab-item} Linux (x86_64)
 ```bash
-__Q2DEV_ENV_NAME=q2dev-amplicon-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/qiime2-amplicon-ubuntu-latest-conda.yml
+__Q2DEV_ENV_NAME=q2dev-qiime2-$(date "+%Y-%m-%d")
+conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-linux-64-conda.yml
 conda activate $__Q2DEV_ENV_NAME
 ```
 ````
 
 ````{tab-item} macOS (Apple Silicon)
 ```bash
-__Q2DEV_ENV_NAME=q2dev-amplicon-$(date "+%Y-%m-%d")
-CONDA_SUBDIR=osx-64 conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/qiime2-amplicon-macos-latest-conda.yml
+__Q2DEV_ENV_NAME=q2dev-qiime2-$(date "+%Y-%m-%d")
+CONDA_SUBDIR=osx-64 conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-osx-64-conda.yml
 conda activate $__Q2DEV_ENV_NAME
 conda config --env --set subdir osx-64
 ```
@@ -168,28 +167,23 @@ conda config --env --set subdir osx-64
 ### MOSHPIT (previously known as the *Metagenome distribution*)
 
 `````{tab-set}
-````{tab-item} macOS
+````{tab-item} Linux (x86_64)
 ```bash
 __Q2DEV_ENV_NAME=moshpit-dev-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/qiime2-moshpit-macos-latest-conda.yml
+conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-moshpit-linux-64-conda.yml
 conda activate $__Q2DEV_ENV_NAME
 ```
 ````
+`````
 
-````{tab-item} Linux
-```bash
-__Q2DEV_ENV_NAME=moshpit-dev-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/qiime2-moshpit-ubuntu-latest-conda.yml
-conda activate $__Q2DEV_ENV_NAME
-```
-````
+### pathogenome
 
-````{tab-item} macOS (Apple Silicon)
+`````{tab-set}
+````{tab-item} Linux (x86_64)
 ```bash
-__Q2DEV_ENV_NAME=moshpit-dev-$(date "+%Y-%m-%d")
-CONDA_SUBDIR=osx-64 conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/qiime2-moshpit-macos-latest-conda.yml
+__Q2DEV_ENV_NAME=pathogenome-dev-$(date "+%Y-%m-%d")
+conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-pathogenome-linux-64-conda.yml
 conda activate $__Q2DEV_ENV_NAME
-conda config --env --set subdir osx-64
 ```
 ````
 `````
