@@ -7,9 +7,7 @@ This is accomplished by stitching together one or more `Methods` and/or `Visuali
 
 Defining a function that can be registered as a `Pipeline` is very similar to defining one that can be registered as a `Method` with a few distinctions.
 
-First, `Pipelines` are not required to use function annotations and instead implicitly receive `Artifact` objects as input and return `Artifact` and/or `Visualization` objects as output.
-
-You may use function annotations on `Pipelines` if you want, and you must use function annotations if you are using the {term}`CaptureHolder` API documented [here](howto-track-the-value-of-auto-params-in-provenance).
+First, `Pipelines` are not required to use function annotations unless you are using the {term}`CaptureHolder` API documented [here](howto-track-the-value-of-auto-params-in-provenance). Instead they implicitly receive `Artifact` objects as input and return `Artifact` and/or `Visualization` objects as output.
 
 If you choose to use function annotations on a `Pipeline` you must annotate all inputs, parameters, outputs, and the special `ctx` argument (described below). The parameters follow the same [mypy](http://mypy-lang.org/) syntax as `Methods` and `Visualizers`; however, the inputs and outputs are annotated simply as `Artifact` or `Visualization` in the case of singles or `list[Artifact]`, `dict[str, Artifact]`, `list[Visualization]`, or `dict[str, Visualization]` in the case of `Collections`. `ctx` must use `IContext` as its annotation.
 
