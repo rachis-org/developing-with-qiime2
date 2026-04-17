@@ -7,32 +7,60 @@ This is accomplished by stitching together one or more `Methods` and/or `Visuali
 
 Defining a function that can be registered as a `Pipeline` is very similar to defining one that can be registered as a `Method` with a few distinctions.
 
-First, `Pipelines` do not use function annotations and instead receive `Artifact` objects as input and return `Artifact` and/or `Visualization` objects as output.
+First, `Pipelines` are not required to use function annotations and instead implicitly receive `Artifact` objects as input and return `Artifact` and/or `Visualization` objects as output.
+
+You may use function annotations on `Pipelines` if you want, and you must use function annotations if you are using the {term}`CaptureHolder` API documented [here](howto-track-the-value-of-auto-params-in-provenance).
+
+If you choose to use function annotations on a `Pipeline` you must annotate all inputs, parameters, outputs, and the special `ctx` argument (described below). The parameters follow the same [mypy](http://mypy-lang.org/) syntax as `Methods` and `Visualizers`; however, the inputs and outputs are annotated simply as `Artifact` or `Visualization` in the case of singles or `list[Artifact]`, `dict[str, Artifact]`, `list[Visualization]`, or `dict[str, Visualization]` in the case of `Collections`. `ctx` must use `IContext` as its annotation.
 
 Second, `Pipelines` must have `ctx` as their first parameter, which provides the following API:
  - `ctx.get_action(plugin: str, action: str)`: returns a *sub-action* that can be called like a normal Artifact API call.
  - `ctx.make_artifact(type, view, view_type=None)`: this has the same behavior as `Artifact.import_data`. It is wrapped by `ctx` for pipeline book-keeping.
 
-Let's take a look at [`q2_diversity.core_metrics`](https://github.com/qiime2/q2-diversity/blob/99a0ccaaec14838b95845dbfe57f874d092b65c7/q2_diversity/_core_metrics.py#L10) for an example of a function that we can register as a `Pipeline`:
+Let's take a look at [`q2_diversity.core_metrics`](https://github.com/qiime2/q2-diversity/blob/3fe491062b8a72939111ff66b2f4aeab8c12b16d/q2_diversity/_core_metrics.py#L14) for an example of a function that we can register as a `Pipeline`:
 
 ```python
-def core_metrics(ctx, table, sampling_depth, metadata, n_jobs=1):
+def core_metrics(ctx: IContext,
+                 table: Artifact,
+                 sampling_depth: int,
+                 metadata: Metadata,
+                 with_replacement: bool = False,
+                 n_jobs: int = 1,
+                 ignore_missing_samples: bool = False,
+                 random_seed: CaptureHolder[int] = None) -> \
+        tuple[
+            Artifact, Artifact, Artifact, Artifact, Artifact, Artifact,
+            Artifact, Artifact, Visualization, Visualization
+        ]:
+    random_int = CaptureHolder.get_or_set(random_seed, get_np_random_seed)
+    biom_table = table.view(biom.Table)
+    if biom_table.length() < 2:
+        raise ValueError(
+            'Table must have at least two samples as beta diversity will be'
+            ' applied later.'
+        )
+
     rarefy = ctx.get_action('feature_table', 'rarefy')
-    alpha = ctx.get_action('diversity', 'alpha')
-    beta = ctx.get_action('diversity', 'beta')
+    observed_features = ctx.get_action('diversity_lib', 'observed_features')
+    pielou_e = ctx.get_action('diversity_lib', 'pielou_evenness')
+    shannon = ctx.get_action('diversity_lib', 'shannon_entropy')
+    braycurtis = ctx.get_action('diversity_lib', 'bray_curtis')
+    jaccard = ctx.get_action('diversity_lib', 'jaccard')
     pcoa = ctx.get_action('diversity', 'pcoa')
     emperor_plot = ctx.get_action('emperor', 'plot')
 
     results = []
-    rarefied_table, = rarefy(table=table, sampling_depth=sampling_depth)
+    rarefied_table, = rarefy(table=table, sampling_depth=sampling_depth,
+                             with_replacement=with_replacement,
+                             random_seed=random_int)
     results.append(rarefied_table)
 
-    for metric in 'observed_otus', 'shannon', 'pielou_e':
-        results += alpha(table=rarefied_table, metric=metric)
+    for metric in (observed_features, shannon, pielou_e):
+        results += metric(table=rarefied_table)
 
     dms = []
-    for metric in 'jaccard', 'braycurtis':
-        beta_results = beta(table=rarefied_table, metric=metric, n_jobs=n_jobs)
+    for metric in (jaccard, braycurtis):
+        beta_results = metric(table=rarefied_table, n_jobs=n_jobs)
         results += beta_results
         dms += beta_results
 
@@ -43,7 +71,8 @@ def core_metrics(ctx, table, sampling_depth, metadata, n_jobs=1):
         pcoas += pcoa_results
 
     for pcoa in pcoas:
-        results += emperor_plot(pcoa=pcoa, metadata=metadata)
+        results += emperor_plot(pcoa=pcoa, metadata=metadata,
+                                ignore_missing_samples=ignore_missing_samples)
 
     return tuple(results)
 ```
@@ -61,7 +90,7 @@ A description of this output should be included in `output_descriptions`
 Citations do not need to be added for the pipeline unless unique citations are required for the pipeline that are not appropriate for the underlying `Methods` and `Visualizers` that it calls.
 Citations for these underlying actions are automatically logged in citation provenance for this pipeline.
 
-As an example for registering a `Pipeline`, we can look at `q2_diversity.core_metrics` (find the original source [here](https://github.com/qiime2/q2-diversity/blob/99a0ccaaec14838b95845dbfe57f874d092b65c7/q2_diversity/plugin_setup.py#L494)):
+As an example for registering a `Pipeline`, we can look at `q2_diversity.core_metrics` (find the original source [here](https://github.com/qiime2/q2-diversity/blob/3fe491062b8a72939111ff66b2f4aeab8c12b16d/q2_diversity/plugin_setup.py#L496-L565)):
 
 ```python
 plugin.pipelines.register_function(
@@ -72,11 +101,14 @@ plugin.pipelines.register_function(
     parameters={
         'sampling_depth': Int % Range(1, None),
         'metadata': Metadata,
-        'n_jobs': Int % Range(0, None),
+        'with_replacement': Bool,
+        'n_jobs': Threads,
+        'ignore_missing_samples': Bool,
+        'random_seed': Int
     },
     outputs=[
         ('rarefied_table', FeatureTable[Frequency]),
-        ('observed_otus_vector', SampleData[AlphaDiversity]),
+        ('observed_features_vector', SampleData[AlphaDiversity]),
         ('shannon_vector', SampleData[AlphaDiversity]),
         ('evenness_vector', SampleData[AlphaDiversity]),
         ('jaccard_distance_matrix', DistanceMatrix),
@@ -88,17 +120,30 @@ plugin.pipelines.register_function(
     ],
     input_descriptions={
         'table': 'The feature table containing the samples over which '
-                'diversity metrics should be computed.',
+                 'diversity metrics should be computed.',
     },
     parameter_descriptions={
         'sampling_depth': 'The total frequency that each sample should be '
-                            'rarefied to prior to computing diversity metrics.',
+                          'rarefied to prior to computing diversity metrics.',
         'metadata': 'The sample metadata to use in the emperor plots.',
-        'n_jobs': '[beta methods only] - %s' % sklearn_n_jobs_description
+        'with_replacement': with_replacement_description,
+        'n_jobs': '[beta methods only] - %s' % n_jobs_description,
+        'ignore_missing_samples': 'If set to `True` samples and features '
+                                  'without metadata are included by '
+                                  'setting all metadata values to: '
+                                  '"This element has no metadata". By '
+                                  'default an exception will be raised if '
+                                  'missing elements are encountered. Note, '
+                                  'this flag only takes effect if there is at '
+                                  'least one overlapping element.',
+        'random_seed': 'Seed for the random number generation used to rarefy '
+                       'your feature table.'
+
     },
     output_descriptions={
         'rarefied_table': 'The resulting rarefied feature table.',
-        'observed_otus_vector': 'Vector of Observed OTUs values by sample.',
+        'observed_features_vector': 'Vector of Observed Features values by '
+                                    'sample.',
         'shannon_vector': 'Vector of Shannon diversity values by sample.',
         'evenness_vector': 'Vector of Pielou\'s evenness values by sample.',
         'jaccard_distance_matrix':
@@ -116,7 +161,7 @@ plugin.pipelines.register_function(
     },
     name='Core diversity metrics (non-phylogenetic)',
     description=("Applies a collection of diversity metrics "
-                "(non-phylogenetic) to a feature table.")
+                 "(non-phylogenetic) to a feature table.")
 )
 ```
 
