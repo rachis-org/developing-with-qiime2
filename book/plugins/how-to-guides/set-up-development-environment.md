@@ -166,6 +166,7 @@ conda config --env --set subdir osx-64
 
 ### MOSHPIT (previously known as the *Metagenome distribution*)
 
+`````{tab-set}
 ````{tab-item} Linux (x86_64)
 ```bash
 __Q2DEV_ENV_NAME=moshpit-dev-$(date "+%Y-%m-%d")
@@ -173,9 +174,11 @@ conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/q
 conda activate $__Q2DEV_ENV_NAME
 ```
 ````
+`````
 
 ### pathogenome
 
+`````{tab-set}
 ````{tab-item} Linux (x86_64)
 ```bash
 __Q2DEV_ENV_NAME=pathogenome-dev-$(date "+%Y-%m-%d")
@@ -183,3 +186,4 @@ conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/q
 conda activate $__Q2DEV_ENV_NAME
 ```
 ````
+`````
