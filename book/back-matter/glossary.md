@@ -23,6 +23,10 @@ Artifact class
 Artifact API
   See {term}`Python 3 API`.
 
+CaptureHolder
+  A class used as the Python type annotation for {term}`Parameters <Parameter>` whose default value is determined algorithmically (e.g., random number generator seeds).
+  Using this class ensures that the algorithmically set value is tracked in {term}`Provenance`.
+
 Collection
   An ordered list of `key: value` pairs. Think of an ordered [Python dictionary](https://docs.python.org/3/tutorial/datastructures.html#dictionaries).
   These can be used as {term}`Input`, {term}`Parameter`, and {term}`Output` {term}`Types <Type>`.
