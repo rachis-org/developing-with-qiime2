@@ -24,8 +24,8 @@ Artifact API
   See {term}`Python 3 API`.
 
 CaptureHolder
-  A class used as the Python type annotation for {term}`Parameters <Parameter>` whose default value indicates the function should determine their value algorithmically (e.g. seeds for rng).
-  Using this class ensures the algorithmically set value is tracked by {term}`Provenance`.
+  A class used as the Python type annotation for {term}`Parameters <Parameter>` whose default value is determined algorithmically (e.g., random number generator seeds).
+  Using this class ensures that the algorithmically set value is tracked in {term}`Provenance`.
 
 Collection
   An ordered list of `key: value` pairs. Think of an ordered [Python dictionary](https://docs.python.org/3/tutorial/datastructures.html#dictionaries).
