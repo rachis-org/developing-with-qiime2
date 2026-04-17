@@ -46,7 +46,7 @@ Directory Format
 
 Distribution
   A collection of QIIME 2 plugins that are installed together through a single {term}`conda metapackage`.
-  These are generally grouped by a theme. For example, the *amplicon distribution* provides a collection of plugins for analysis of microbiome amplicon data, while MOSHPIT (previously the *metagenome distribution*) provides a collection of plugins for analysis of microbiome shotgun metagenomics data.
+  These are generally grouped by a theme. For example, the *qiime2 distribution* provides a collection of plugins for analysis of microbiome amplicon data, while MOSHPIT (previously the *metagenome distribution*) provides a collection of plugins for analysis of microbiome shotgun metagenomics data.
   When a distribution is installed, that particular installation of QIIME 2 is an example of a {term}`deployment`.
 
 DRY

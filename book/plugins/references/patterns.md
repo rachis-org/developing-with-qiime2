@@ -11,7 +11,7 @@ When you're naming inputs, outputs, and parameters for your actions, look at oth
 
 ### Metadata parameter name recommendations
 
-We make the following recommendations for naming `Metadata` parameters, based on [a review](https://gist.github.com/gregcaporaso/4be64940f80256316e3308d2ae2ec0da) of how these had actually been named in the plugins in the QIIME 2 *amplicon distribution* in November 2025.
+We make the following recommendations for naming `Metadata` parameters, based on [a review](https://gist.github.com/gregcaporaso/4be64940f80256316e3308d2ae2ec0da) of how these had actually been named in the plugins in the rachis *qiime2 distribution* in November 2025.
 
 - If your action takes only one sample metadata input, call it `metadata`. ([example: `kmer-diversity`](https://amplicon-docs.qiime2.org/en/latest/references/plugins/boots.html#q2-action-boots-kmer-diversity))
 - If your action takes only one feature metadata input, call it `feature-metadata`.

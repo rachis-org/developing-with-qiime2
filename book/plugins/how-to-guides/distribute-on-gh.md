@@ -16,7 +16,7 @@ The GitHub command line interface is used here as it's easier to document and te
 
 Create a new template plugin, according to the instructions in [](plugin-from-template).
 Pay attention to the question about the "target distribution" - this enables templating of installation instructions and test machinery against the distribution of your choice.
-For example, if you want your plugin to expand upon the `amplicon` distribution, this is where you indicate that.
+For example, if you want your plugin to expand upon the `qiime2` distribution, this is where you indicate that.
 
 After completing those steps, return to this page.
 
