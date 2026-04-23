@@ -46,25 +46,25 @@ Things change relatively quickly with development environments, so it doesn't hu
 `````{tab-set}
 ````{tab-item} macOS (x86_64)
 ```bash
-__Q2DEV_ENV_NAME=q2dev-tiny-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-osx-64-conda.yml
-conda activate $__Q2DEV_ENV_NAME
+__RACHISDEV_ENV_NAME=tiny-dev-$(date "+%Y-%m-%d")
+conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-osx-64-conda.yml
+conda activate $__RACHISDEV_ENV_NAME
 ```
 ````
 
 ````{tab-item} Linux (x86_64)
 ```bash
-__Q2DEV_ENV_NAME=q2dev-tiny-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-linux-64-conda.yml
-conda activate $__Q2DEV_ENV_NAME
+__RACHISDEV_ENV_NAME=tiny-dev-$(date "+%Y-%m-%d")
+conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-linux-64-conda.yml
+conda activate $__RACHISDEV_ENV_NAME
 ```
 ````
 
 ````{tab-item} macOS (ARM64)
 ```bash
-__Q2DEV_ENV_NAME=q2dev-tiny-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-osx-arm64-conda.yml
-conda activate $__Q2DEV_ENV_NAME
+__RACHISDEV_ENV_NAME=tiny-dev-$(date "+%Y-%m-%d")
+conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-osx-arm64-conda.yml
+conda activate $__RACHISDEV_ENV_NAME
 ```
 ````
 `````
@@ -81,24 +81,24 @@ You should see something like the following, though the version numbers you'll s
 
 ```
 System versions
-Python version: 3.10.14
-QIIME 2 release: 2025.4
-QIIME 2 version: 2025.4.0.dev0+18.g9414a65
-q2cli version: 2025.4.0.dev0+21.g97e80cc
+Python version: 3.12.13
+QIIME 2 release: 2026.4
+QIIME 2 version: 2026.4.0.dev0+27.gcb647ee
+q2cli version: 2026.4.0.dev0+2.gcfcff79
 
 Installed plugins
-metadata: 2025.4.0.dev0+8.g66139ab
-types: 2025.4.0.dev0+16.g229da69
+metadata: 2026.4.0.dev0
+types: 2026.4.0.dev0+2.g3c86994
 
 Application config directory
-/Users/q2-user/miniforge3/envs/q2dev-tiny-2025-04-30/var/q2cli
+/opt/conda/envs/tiny-dev-2026-04-23/var/q2cli
 
 Config
-Config Source: /Users/q2-user/miniforge3/envs/q2dev-tiny-2025-04-30/etc/qiime2_config.toml
+Config Source: /opt/conda/envs/tiny-dev-2026-04-23/etc/qiime2_config.toml
 
 Getting help
 To find help and learning resources, visit https://qiime2.org.
-To get help with configuring and/or understanding QIIME 2 parallelization, visit https://use.qiime2.org/en/latest/references/parallel-configuration.html
+To get help with configuring and/or understanding QIIME 2 parallelization, visit https://use.qiime2.org/en/stable/references/parallel-configuration.html
 ```
 
 The versions listed here, for QIIME 2, q2cli, q2-types, and q2-metadata are development versions as defined by [versioneer](https://github.com/python-versioneer/python-versioneer), and these indicate that you're working in a QIIME 2 development environment (as opposed to working with a specific release version of QIIME 2).
@@ -140,25 +140,25 @@ make test
 `````{tab-set}
 ````{tab-item} macOS (x86_64)
 ```bash
-__Q2DEV_ENV_NAME=q2dev-qiime2-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-osx-64-conda.yml
-conda activate $__Q2DEV_ENV_NAME
+__RACHISDEV_ENV_NAME=qiime2-dev-$(date "+%Y-%m-%d")
+conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-osx-64-conda.yml
+conda activate $__RACHISDEV_ENV_NAME
 ```
 ````
 
 ````{tab-item} Linux (x86_64)
 ```bash
-__Q2DEV_ENV_NAME=q2dev-qiime2-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-linux-64-conda.yml
-conda activate $__Q2DEV_ENV_NAME
+__RACHISDEV_ENV_NAME=qiime2-dev-$(date "+%Y-%m-%d")
+conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-linux-64-conda.yml
+conda activate $__RACHISDEV_ENV_NAME
 ```
 ````
 
 ````{tab-item} macOS (Apple Silicon)
 ```bash
-__Q2DEV_ENV_NAME=q2dev-qiime2-$(date "+%Y-%m-%d")
-CONDA_SUBDIR=osx-64 conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-osx-64-conda.yml
-conda activate $__Q2DEV_ENV_NAME
+__RACHISDEV_ENV_NAME=qiime2-dev-$(date "+%Y-%m-%d")
+CONDA_SUBDIR=osx-64 conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-osx-64-conda.yml
+conda activate $__RACHISDEV_ENV_NAME
 conda config --env --set subdir osx-64
 ```
 ````
@@ -169,9 +169,9 @@ conda config --env --set subdir osx-64
 `````{tab-set}
 ````{tab-item} Linux (x86_64)
 ```bash
-__Q2DEV_ENV_NAME=moshpit-dev-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-moshpit-linux-64-conda.yml
-conda activate $__Q2DEV_ENV_NAME
+__RACHISDEV_ENV_NAME=moshpit-dev-$(date "+%Y-%m-%d")
+conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-moshpit-linux-64-conda.yml
+conda activate $__RACHISDEV_ENV_NAME
 ```
 ````
 `````
@@ -181,9 +181,9 @@ conda activate $__Q2DEV_ENV_NAME
 `````{tab-set}
 ````{tab-item} Linux (x86_64)
 ```bash
-__Q2DEV_ENV_NAME=pathogenome-dev-$(date "+%Y-%m-%d")
-conda env create -n $__Q2DEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-pathogenome-linux-64-conda.yml
-conda activate $__Q2DEV_ENV_NAME
+__RACHISDEV_ENV_NAME=pathogenome-dev-$(date "+%Y-%m-%d")
+conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-pathogenome-linux-64-conda.yml
+conda activate $__RACHISDEV_ENV_NAME
 ```
 ````
 `````
