@@ -46,7 +46,7 @@ Things change relatively quickly with development environments, so it doesn't hu
 `````{tab-set}
 ````{tab-item} macOS (x86_64)
 ```bash
-__RACHISDEV_ENV_NAME=rachisdev-tiny-$(date "+%Y-%m-%d")
+__RACHISDEV_ENV_NAME=tiny-dev-$(date "+%Y-%m-%d")
 conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-osx-64-conda.yml
 conda activate $__RACHISDEV_ENV_NAME
 ```
@@ -54,7 +54,7 @@ conda activate $__RACHISDEV_ENV_NAME
 
 ````{tab-item} Linux (x86_64)
 ```bash
-__RACHISDEV_ENV_NAME=rachisdev-tiny-$(date "+%Y-%m-%d")
+__RACHISDEV_ENV_NAME=tiny-dev-$(date "+%Y-%m-%d")
 conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-linux-64-conda.yml
 conda activate $__RACHISDEV_ENV_NAME
 ```
@@ -62,7 +62,7 @@ conda activate $__RACHISDEV_ENV_NAME
 
 ````{tab-item} macOS (ARM64)
 ```bash
-__RACHISDEV_ENV_NAME=rachisdev-tiny-$(date "+%Y-%m-%d")
+__RACHISDEV_ENV_NAME=tiny-dev-$(date "+%Y-%m-%d")
 conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-tiny-osx-arm64-conda.yml
 conda activate $__RACHISDEV_ENV_NAME
 ```
@@ -91,10 +91,10 @@ metadata: 2025.4.0.dev0+8.g66139ab
 types: 2025.4.0.dev0+16.g229da69
 
 Application config directory
-/Users/q2-user/miniforge3/envs/rachisdev-tiny-2025-04-30/var/q2cli
+/Users/q2-user/miniforge3/envs/tiny-dev-2025-04-30/var/q2cli
 
 Config
-Config Source: /Users/q2-user/miniforge3/envs/rachisdev-tiny-2025-04-30/etc/qiime2_config.toml
+Config Source: /Users/q2-user/miniforge3/envs/tiny-dev-2025-04-30/etc/qiime2_config.toml
 
 Getting help
 To find help and learning resources, visit https://qiime2.org.
@@ -140,7 +140,7 @@ make test
 `````{tab-set}
 ````{tab-item} macOS (x86_64)
 ```bash
-__RACHISDEV_ENV_NAME=rachisdev-qiime2-$(date "+%Y-%m-%d")
+__RACHISDEV_ENV_NAME=qiime2-dev--$(date "+%Y-%m-%d")
 conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-osx-64-conda.yml
 conda activate $__RACHISDEV_ENV_NAME
 ```
@@ -148,7 +148,7 @@ conda activate $__RACHISDEV_ENV_NAME
 
 ````{tab-item} Linux (x86_64)
 ```bash
-__RACHISDEV_ENV_NAME=rachisdev-qiime2-$(date "+%Y-%m-%d")
+__RACHISDEV_ENV_NAME=qiime2-dev--$(date "+%Y-%m-%d")
 conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-linux-64-conda.yml
 conda activate $__RACHISDEV_ENV_NAME
 ```
@@ -156,7 +156,7 @@ conda activate $__RACHISDEV_ENV_NAME
 
 ````{tab-item} macOS (Apple Silicon)
 ```bash
-__RACHISDEV_ENV_NAME=rachisdev-qiime2-$(date "+%Y-%m-%d")
+__RACHISDEV_ENV_NAME=qiime2-dev--$(date "+%Y-%m-%d")
 CONDA_SUBDIR=osx-64 conda env create -n $__RACHISDEV_ENV_NAME --file https://raw.githubusercontent.com/qiime2/distributions/dev/latest/passed/rachis-qiime2-osx-64-conda.yml
 conda activate $__RACHISDEV_ENV_NAME
 conda config --env --set subdir osx-64
