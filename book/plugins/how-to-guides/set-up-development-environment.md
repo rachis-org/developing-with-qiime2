@@ -95,11 +95,12 @@ Application config directory
 
 Config
 Config Source: /Users/q2-user/miniforge3/envs/q2dev-tiny-2025-04-30/etc/qiime2_config.toml
-
-Getting help
-To find help and learning resources, visit https://qiime2.org.
-To get help with configuring and/or understanding QIIME 2 parallelization, visit https://use.qiime2.org/en/latest/references/parallel-configuration.html
 ```
+
+### Getting help
+To find help and learning resources, visit https://qiime2.org.
+To get help with configuring and/or understanding QIIME 2 parallelization, visit https://use.qiime2.org/en/2026.4/references/parallel-configuration/
+
 
 The versions listed here, for QIIME 2, q2cli, q2-types, and q2-metadata are development versions as defined by [versioneer](https://github.com/python-versioneer/python-versioneer), and these indicate that you're working in a QIIME 2 development environment (as opposed to working with a specific release version of QIIME 2).
 

@@ -13,12 +13,12 @@ When you're naming inputs, outputs, and parameters for your actions, look at oth
 
 We make the following recommendations for naming `Metadata` parameters, based on [a review](https://gist.github.com/gregcaporaso/4be64940f80256316e3308d2ae2ec0da) of how these had actually been named in the plugins in the QIIME 2 *amplicon distribution* in November 2025.
 
-- If your action takes only one sample metadata input, call it `metadata`. ([example: `kmer-diversity`](https://amplicon-docs.qiime2.org/en/2026.4/references/plugins/boots.html#q2-action-boots-kmer-diversity))
+- If your action takes only one sample metadata input, call it `metadata`. ([example: `kmer-diversity`](https://amplicon-docs.qiime2.org/en/2026.4/references/plugins/boots#q2-action-boots-kmer-diversity))
 - If your action takes only one feature metadata input, call it `feature-metadata`.
-- If your action takes a sample metadata input and a feature metadata input, called them `sample-metadata` and `feature-metadata`, respectively. ([example: `biplot`](https://amplicon-docs.qiime2.org/en/2026.4/references/plugins/emperor.html#q2-action-emperor-biplot))
-- If your action uses a metadata parameter to take a list of identifiers, name that in a way that is relevant for that action. ([example: `get-ncbi-data`](https://amplicon-docs.qiime2.org/en/2026.4/references/plugins/rescript.html#q2-action-rescript-get-ncbi-data))
-  - If this list of identifiers is used for filtering purposes, call that parameter `ids-to-keep` or `ids-to-exclude`, based on whether the ids provided are retained for the analysis or excluded from the analysis, respectively. ([example: `filter-taxa`](https://amplicon-docs.qiime2.org/en/2026.4/references/plugins/rescript.html#q2-action-rescript-filter-taxa))
-- If your action takes more than one sample metadata input, called them `metadata1`, `metadatá2`, ... ([example: `merge`](https://amplicon-docs.qiime2.org/en/2026.4/references/plugins/metadata.html#q2-action-metadata-merge))
+- If your action takes a sample metadata input and a feature metadata input, called them `sample-metadata` and `feature-metadata`, respectively. ([example: `biplot`](https://amplicon-docs.qiime2.org/en/2026.4/references/plugins/emperor#q2-action-emperor-biplot))
+- If your action uses a metadata parameter to take a list of identifiers, name that in a way that is relevant for that action. ([example: `get-ncbi-data`](https://amplicon-docs.qiime2.org/en/2026.4/references/plugins/rescript#q2-action-rescript-get-ncbi-data))
+  - If this list of identifiers is used for filtering purposes, call that parameter `ids-to-keep` or `ids-to-exclude`, based on whether the ids provided are retained for the analysis or excluded from the analysis, respectively. ([example: `filter-taxa`](https://amplicon-docs.qiime2.org/en/2026.4/references/plugins/rescript#q2-action-rescript-filter-taxa))
+- If your action takes more than one sample metadata input, called them `metadata1`, `metadata2`, ... ([example: `merge`](https://amplicon-docs.qiime2.org/en/2026.4/references/plugins/metadata#q2-action-metadata-merge))
 - If your action takes more than one feature metadata input, called them `feature-metadata1`, `feature-metadata2`, ...
 
 [^my-name-is-better]: Sometimes you may have a slightly better name for an input, output, or parameter than what is widely used.
