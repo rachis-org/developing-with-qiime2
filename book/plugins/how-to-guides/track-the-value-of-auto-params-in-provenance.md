@@ -36,6 +36,7 @@ What changes is the implementation of the underlying Python function:
 ```python
 from qiime2.plugin import CaptureHolder
 
+
 def random_seed_method(random_seed: CaptureHolder[int] = None) -> int:
     # Resolve the seed: if the user passed None, generate a random value and
     # record it in provenance; otherwise use the user-supplied value as-is.
