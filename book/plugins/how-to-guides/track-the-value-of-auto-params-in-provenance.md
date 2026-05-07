@@ -34,7 +34,7 @@ my_plugin.methods.register_function(
 What changes is the implementation of the underlying Python function:
 
 ```python
-from qiime2.plugin.type import CaptureHolder
+from qiime2.plugin import CaptureHolder
 
 def random_seed_method(random_seed: CaptureHolder[int] = None) -> int:
     # Resolve the seed: if the user passed None, generate a random value and

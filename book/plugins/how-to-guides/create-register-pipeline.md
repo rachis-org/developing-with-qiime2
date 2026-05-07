@@ -18,6 +18,9 @@ Second, `Pipelines` must have `ctx` as their first parameter, which provides the
 Let's take a look at [`q2_diversity.core_metrics`](https://github.com/qiime2/q2-diversity/blob/3fe491062b8a72939111ff66b2f4aeab8c12b16d/q2_diversity/_core_metrics.py#L14) for an example of a function that we can register as a `Pipeline`:
 
 ```python
+from qiime2.plugin import IContext
+
+
 def core_metrics(ctx: IContext,
                  table: Artifact,
                  sampling_depth: int,
