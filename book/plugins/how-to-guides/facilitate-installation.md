@@ -13,7 +13,7 @@ environment-files/
 ```
 
 Within this directory, create environment file(s) for current and/or past installable versions of your plugin.
-You can name them with a pattern like `<package-name>-qiime2-<target-distribution>-<target-epoch>.yml` (for example, `q2-dwq2-qiime2-amplicon-2024.5.yml`).
+You can name them with a pattern like `<package-name>-rachis-<target-distribution>-<target-epoch>.yml` (for example, `q2-dwq2-rachis-qiime2-2026.4.yml`).
 
 The contents of your environment file should look something like this:
 
@@ -23,7 +23,7 @@ channels:
 - conda-forge
 - bioconda
 dependencies:
-  - qiime2-<target-distribution>
+  - rachis-<target-distribution>
   - pip
   - pip:
     - <package-name>@git+https://github.com/<owner>/<repository-name>.git@<target-branch>
@@ -31,7 +31,7 @@ dependencies:
 
 With the following terms defined:
 - `<target-epoch>`: the QIIME 2 epoch that your plugin should be installed under (e.g., `2024.5` or `2024.10`)
-- `<target-distribution>`: the QIIME 2 distribution that your plugin should be installed under (e.g., `amplicon` or `moshpit`)
+- `<target-distribution>`: the QIIME 2 distribution that your plugin should be installed under (e.g., `qiime2` or `moshpit`)
 - `<package-name>`: your plugin's package name (e.g., `q2-dwq2`)
 - `<owner>`: the github organization your plugin is hosted under, or your personal github account name
 - `<repository-name>`: the name of your plugin repository on GitHub (this often will be the same as your plugin's package name, e.g., `q2-dwq2`)
@@ -40,9 +40,9 @@ With the following terms defined:
 ``````{Note}
 In the examples provided in this guide, we utilize the `released` channel for our QIIME 2 packages (i.e. `packages.qiime2.org/qiime2/<target-epoch>/<target-distribution>/released`).
 If you are interested in creating and/or sharing instructions for installing a version of your plugin that relies on one of our development environments (meaning the current development cycle environment prior to an official release version), you'll want to target the `passed` channel of that particular distribution.
-Here's an example of what this channel might look like (as of Sept. 2024, prior to the 2024.10 release):
+Here's an example of what this channel might look like (as of June 2026, prior to the 2026.7 release):
 ```
-https://packages.qiime2.org/qiime2/2024.10/amplicon/passed
+https://packages.qiime2.org/qiime2/2026.7/qiime2/passed
 ```
 ``````
 
@@ -50,7 +50,7 @@ Using the above guidelines, you can provide the following install instructions f
 ```
 conda env create \
  -n <target-epoch>-<package-name> \
- -f https://raw.githubusercontent.com/<owner>/<repository-name>/<target-branch>/environment-files/<package-name>-qiime2-<target-distribution>-<target-epoch>.yml
+ -f https://raw.githubusercontent.com/<owner>/<repository-name>/<target-branch>/environment-files/<package-name>-rachis-<target-distribution>-<target-epoch>.yml
 ```
 
 Again, you'll fill in the values enclosed in the `<` and `>` brackets.
@@ -63,28 +63,28 @@ By maintaining release branches on your repository, you can create a new environ
 As an example, your branch structure could look like the following:
 
 ```
-release-2024.5 # the 2024.5 release of your plugin
-release-2024.10 # the 2024.10 release of your plugin
+release-2026.4 # the 2026.4 release of your plugin
 main # your main branch, usually what would be installed for a "development" installation
 ```
 
-You could then have environment files and install instructions for these different branches that look like the following (in this example, `amplicon` is the target distribution):
+You could then have environment files and install instructions for these different branches that look like the following (in this example, `qiime2` is the target distribution):
 
 `````{tab-set}
-````{tab-item} release-2024.5
 
-Environment file: `q2-dwq2-qiime2-amplicon-2024.5.yml`
+````{tab-item} release-2026.4
+
+Environment file: `q2-dwq2-rachis-qiime2-2026.4.yml`
 
 ```
 channels:
-- https://packages.qiime2.org/qiime2/2024.5/amplicon/released
+- https://packages.qiime2.org/qiime2/2026.4/qiime2/released
 - conda-forge
 - bioconda
 dependencies:
-  - qiime2-amplicon
+  - rachis-qiime2
   - pip
   - pip:
-    - q2-dwq2@git+https://github.com/caporaso-lab/q2-dwq2.git@release-2024.5
+    - q2-dwq2@git+https://github.com/caporaso-lab/q2-dwq2.git@release-2026.4
 ```
 
 Install instructions:
@@ -92,48 +92,22 @@ Install instructions:
 ```
 conda env create \
  -n q2-dwq2 \
- -f https://raw.githubusercontent.com/caporaso-lab/q2-dwq2.git/main/environment-files/q2-dwq2-qiime2-amplicon-2024.5.yml
-```
-
-````
-
-````{tab-item} release-2024.10
-
-Environment file: `q2-dwq2-qiime2-amplicon-2024.10.yml`
-
-```
-channels:
-- https://packages.qiime2.org/qiime2/2024.10/amplicon/released
-- conda-forge
-- bioconda
-dependencies:
-  - qiime2-amplicon
-  - pip
-  - pip:
-    - q2-dwq2@git+https://github.com/caporaso-lab/q2-dwq2.git@release-2024.10
-```
-
-Install instructions:
-
-```
-conda env create \
- -n q2-dwq2 \
- -f https://raw.githubusercontent.com/caporaso-lab/q2-dwq2.git/main/environment-files/q2-dwq2-qiime2-amplicon-2024.10.yml
+ -f https://raw.githubusercontent.com/caporaso-lab/q2-dwq2.git/main/environment-files/q2-dwq2-rachis-qiime2-2026.4.yml
 ```
 
 ````
 
 ````{tab-item} main (development)
 
-Environment file: `q2-dwq2-qiime2-amplicon-development.yml`
+Environment file: `q2-dwq2-rachis-qiime2-development.yml`
 
 ```
 channels:
-- https://packages.qiime2.org/qiime2/2024.10/amplicon/released
+- https://packages.qiime2.org/qiime2/2026.7/qiime2/passed
 - conda-forge
 - bioconda
 dependencies:
-  - qiime2-amplicon
+  - rachis-qiime2
   - pip
   - pip:
     - q2-dwq2@git+https://github.com/caporaso-lab/q2-dwq2.git
@@ -144,7 +118,7 @@ Install instructions:
 ```
 conda env create \
  -n q2-dwq2 \
- -f https://raw.githubusercontent.com/caporaso-lab/q2-dwq2.git/main/environment-files/q2-dwq2-qiime2-amplicon-development.yml
+ -f https://raw.githubusercontent.com/caporaso-lab/q2-dwq2.git/main/environment-files/q2-dwq2-rachis-qiime2-development.yml
 ```
 
 ````
@@ -167,24 +141,24 @@ As an example, the contents of an environment file for a plugin that depends on 
 
 ```
 channels:
-- https://packages.qiime2.org/qiime2/2024.5/tiny/released
-- https://packages.qiime2.org/qiime2/2024.5/amplicon/released
+- https://packages.qiime2.org/qiime2/2026.4/tiny/released
+- https://packages.qiime2.org/qiime2/2026.4/qiime2/released
 - conda-forge
 - bioconda
 dependencies:
-  - qiime2-tiny
+  - rachis-tiny
   - q2-feature-table
   - q2-composition
   - pip
   - pip:
-    - q2-dwq2@git+https://github.com/caporaso-lab/q2-dwq2.git@release-2024.5
+    - q2-dwq2@git+https://github.com/caporaso-lab/q2-dwq2.git@release-2026.4
 ```
 
-In this example, the plugin being developed (`q2-dwq2`) requires `q2-feature-table` and `q2-composition`, but we're assuming that it's not compatible with the entire amplicon distribution.
-Because this plugin still requires a basic QIIME 2 environment, the `qiime2-tiny` distribution will be installed from the first channel listed.
-The `q2-feature-table` and `q2-composition` dependencies are not part of the `qiime2-tiny` distribution however, but are a part of the amplicon distribution.
-Therefore the second channel listed is the `amplicon` channel.
-We then list the dependencies as `qiime2-tiny` (the `tiny` distribution) and then the two additional plugins.
+In this example, the plugin being developed (`q2-dwq2`) requires `q2-feature-table` and `q2-composition`, but we're assuming that it's not compatible with the entire qiime2 distribution.
+Because this plugin still requires a basic QIIME 2 environment, the `rachis-tiny` distribution will be installed from the first channel listed.
+The `q2-feature-table` and `q2-composition` dependencies are not part of the `rachis-tiny` distribution however, but are a part of the qiime2 distribution.
+Therefore the second channel listed is the `qiime2` channel.
+We then list the dependencies as `rachis-tiny` (the `tiny` distribution) and then the two additional plugins.
 Those are all followed by the installation of the `q2-dwq2` plugin, as in the previous example.
 
 Generally, your customized environment files will be structured as follows:
@@ -195,7 +169,7 @@ channels:
 - conda-forge
 - bioconda
 dependencies:
-  - qiime2-tiny
+  - rachis-tiny
   - <other-plugin-dependency-1>
   - <other-plugin-dependency-2>
   - pip
