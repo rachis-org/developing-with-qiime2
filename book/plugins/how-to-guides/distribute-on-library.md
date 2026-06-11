@@ -27,7 +27,7 @@ The *About* section of a GitHub repository.
    Only resources referenced with absolute URLs will load.
 1. Conda environment files must be provided for installation, and they must meet a few formatting requirements.
    This is the highest bar to clear to have your plugin be compatible with the QIIME 2 Library.
-   * Your repository must include environment YAML files for each QIIME 2 release you support using the naming scheme `<plugin-name>-qiime2-<distro>-<epoch>.yml`.
+   * Your repository must include environment YAML files for each QIIME 2 release you support using the naming scheme `<plugin-name>-rachis-<distro>-<epoch>.yml`.
      These files must be located in your repository's `/environment-files` folder.
      More detailed instructions on how to do this are provided in [](facilitating-installation).
      One feature that we're working on adding to the Library is a system that can automatically submit PRs against your plugin repository to add new environment files when new QIIME 2 releases come out, to help you keep your plugin up-to-date with QIIME 2 - more on this soon!
