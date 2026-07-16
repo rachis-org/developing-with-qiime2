@@ -17,7 +17,7 @@ cd developing-with-qiime2
 
 ```bash
 __DWQ2_ENV_NAME=dwq2-$(date "+%Y-%m-%d")
-conda env create -n $__DWQ2_ENV_NAME --file ./environment.yml
+conda env create -n $__DWQ2_ENV_NAME --file ./environment-files/readthedocs.yml
 conda activate $__DWQ2_ENV_NAME
 ```
 
