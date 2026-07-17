@@ -29,15 +29,15 @@ Build order within a level is not important.
 
 | Name | Description | Target | URL |
 | ---- | ----------- | ------ | --- |
-| Developing with QIIME 2 | developer manual | `developing-with-rachis-target` | <https://develop.qiime2.org/en/latest/> |
-| Using QIIME 2 | rachis user manual | `using-rachis-target` | <https://use.qiime2.org/en/latest/> |
+| Developing with QIIME 2 | developer manual | `developing-with-rachis-target` | <https://develop.qiime2.org/> |
+| Using QIIME 2 | rachis user manual | `using-rachis-target` | <https://use.qiime2.org/> |
 
 ## Level 2: data-set focused tutorials
 
 | Name | Description | Target | URL |
 | ---- | ----------- | ------ | --- |
-| Gut-to-soil tutorial | user-focused QIIME 2 tutorial | `gut-to-soil-target` | <https://gut-to-soil-tutorial.readthedocs.io/en/latest/> |
-| Moving pictures tutorial | user-focused QIIME 2 tutorial | `moving-pictures-target` | <https://moving-pictures-tutorial.readthedocs.io/en/latest/> |
+| Gut-to-soil tutorial | user-focused QIIME 2 tutorial | `gut-to-soil-target` | <https://gut-to-soil-tutorial.readthedocs.io/> |
+| Moving pictures tutorial | user-focused QIIME 2 tutorial | `moving-pictures-target` | <https://moving-pictures-tutorial.readthedocs.io/> |
 
 ## Level 3: Examples of distribution and plugin documentation
 
@@ -46,10 +46,10 @@ For that reason, canonical targets aren't yet defined.
 
 | Name | Description | Target | URL |
 | ---- | ----------- | ------ | --- |
-| amplicon-docs | QIIME 2 user manual | *no target defined* | <https://amplicon-docs.qiime2.org/en/latest/> |
-| moshpit docs | MOSHPIT user manual | *no target defined* | <https://moshpit.qiime2.org/en/latest/> |
-| genome-sampler docs | `genome-sampler` documentation | *no target defined* | <https://genome-sampler.readthedocs.io/en/latest/> |
-| q2-fmt docs | `q2-fmt` documentation | *no target defined* | <https://q2-fmt.readthedocs.io/en/latest/> |
+| amplicon-docs | QIIME 2 user manual | *no target defined* | <https://amplicon-docs.qiime2.org/> |
+| moshpit docs | MOSHPIT user manual | *no target defined* | <https://moshpit.qiime2.org/> |
+| genome-sampler docs | `genome-sampler` documentation | *no target defined* | <https://genome-sampler.readthedocs.io/> |
+| q2-fmt docs | `q2-fmt` documentation | *no target defined* | <https://q2-fmt.readthedocs.io/> |
 
 
 # Miscellaneous notes
