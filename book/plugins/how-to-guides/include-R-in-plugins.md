@@ -16,7 +16,7 @@ DADA2 is an R package that denoises raw sequencing data.
 To make it available to QIIME 2 users, the following steps were followed.
 
 First, the DADA2 dependency was specified in the `conda-recipe/meta.yaml` file.
-See the documentation about QIIME 2 plugin package structures [here](https://develop.qiime2.org/en/latest/plugins/explanations/package-structure.html#plugin-package-explanation) for more information.
+See the documentation about QIIME 2 plugin package structures [here](https://develop.qiime2.org/en/2026.7/plugins/explanations/package-structure.html#plugin-package-explanation) for more information.
 The DADA2 software has a conda package available through [bioconductor](https://www.bioconductor.org).
 Hosting an R package on a conda channel greatly simplifies the process of dependency installation.
 Therefore, conda packages should be the preferred method of dependency installation.
