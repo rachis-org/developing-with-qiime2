@@ -73,19 +73,19 @@ This can be accomplished by calling `CaptureHolder.set_value` as seen below.
 from qiime2.plugin import CaptureHolder
 
 
-def random_seed_method(random_seed: CaptureHolder[int] = None) -> int:
+def random_seed_method(auto_seed: CaptureHolder[int] = None) -> int:
     # Resolve the seed: if the user passed None, generate a random value and
     # record it in provenance; otherwise use the user-supplied value as-is.
-    random_int = CaptureHolder.get_or_set(
-        random_seed, lambda: random.randrange(sys.maxsize)
+    auto_int = CaptureHolder.get_or_set(
+        auto_seed, lambda: random.randrange(sys.maxsize)
     )
 
     # Use the resolved integer value (guaranteed to never be None here)
-    my_value = my_function(random_int)
+    auto_int = my_function(auto_int)
     # Set the new value on the CaptureHolder overwriting the old one
-    CaptureHolder.set_value(random_seed, my_value, overwrite=True)
+    CaptureHolder.set_value(auto_seed, auto_int, overwrite=True)
 
-    return my_value
+    return auto_int
 ```
 
 `CaptureHolder.set_value` takes three arguments: the {term}`CaptureHolder` {term}`Parameter` instance, the value you are setting on it, and a boolean called `overwrite` that defaults to `False`. You must pass `overwrite=True` and explicitly assert that you are changing the value on the {term}`CaptureHolder`, and as a result the value in {term}`Provenance` just to make sure you know what you're doing and want to do this. The value set in {term}`Provenance` needs to be a value that could be passed into the given {term}`Action` for the given {term}`Parameter` leading to the same result as the run the {term}`Provenance` is recording.
