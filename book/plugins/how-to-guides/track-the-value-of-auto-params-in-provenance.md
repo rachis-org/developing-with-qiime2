@@ -61,7 +61,36 @@ If the user passed `None`, the callable is invoked and its return value is used.
 If the user passed an explicit value, that value is returned directly.
 In both cases the resolved value is written back into the {term}`Action`'s {term}`Provenance` as though it had been passed in by the user originally.
 
+## Modifying the Value on a CaptureHolder
+
+{term}`CaptureHolder` objects also support overwriting the value that was set on them. This is a feature that will not be necessary in most cases, and should be used with care.
+
+For a real example of how this might be useful, [`scikit_learn.PCA`](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) allows the user to pass in n_components as an integer, or a float 0 < n_components < 1. The float will cause PCA to select the number of components such that the amount of variance that needs to be explained is less than the percentage specified by n_components. Fortunately, it is possible to retrieve the integer number of components that ended up being used from the PCA object. In a situation like this, if a user passes in a float, it may be desirable to set the integer number of components actually used in provenance, and not the float.
+
+This can be accomplished by calling `CaptureHolder.set_value` as seen below.
+
+```python
+from qiime2.plugin import CaptureHolder
+
+
+def random_seed_method(auto_seed: CaptureHolder[int] = None) -> int:
+    # Resolve the seed: if the user passed None, generate a random value and
+    # record it in provenance; otherwise use the user-supplied value as-is.
+    auto_int = CaptureHolder.get_or_set(
+        auto_seed, lambda: random.randrange(sys.maxsize)
+    )
+
+    # Use the resolved integer value (guaranteed to never be None here)
+    auto_int = my_function(auto_int)
+    # Set the new value on the CaptureHolder overwriting the old one
+    CaptureHolder.set_value(auto_seed, auto_int, overwrite=True)
+
+    return auto_int
+```
+
+`CaptureHolder.set_value` takes three arguments: the {term}`CaptureHolder` {term}`Parameter` instance, the value you are setting on it, and a boolean called `overwrite` that defaults to `False`. You must pass `overwrite=True` and explicitly assert that you are changing the value on the {term}`CaptureHolder`, and as a result the value in {term}`Provenance` just to make sure you know what you're doing and want to do this. The value set in {term}`Provenance` needs to be a value that could be passed into the given {term}`Action` for the given {term}`Parameter` leading to the same result as the run the {term}`Provenance` is recording.
+
 ```{note}
-When calling the underlying function directly during testing (rather than through QIIME 2), `CaptureHolder.get_or_set` behaves correctly whether the parameter is a `CaptureHolder` instance, a plain value, or `None`.
+When calling the underlying function directly during testing (rather than through QIIME 2), `CaptureHolder.get_or_set` and `CaptureHolder.set` behave correctly whether the parameter is a `CaptureHolder` instance, a plain value, or `None`.
 This means you can write unit tests that call the function directly without any special handling.
 ```
