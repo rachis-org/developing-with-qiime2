@@ -9,7 +9,7 @@ lint:
 	  --verbose
 
 html:
-	jupyter book build book/
+	Q2DOC_BASE_COMMAND='qiime2' jupyter book build book/
 
 clean:
 	jupyter book clean book/
