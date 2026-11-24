@@ -1,0 +1,34 @@
+name: build-docs
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - '[0-9][0-9][0-9][0-9].*'
+  workflow_dispatch:
+    inputs:
+      canonical-url:
+        description: 'URL the docs will be served from (optional)'
+        required: false
+        default: ''
+
+concurrency:
+  group: build-docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-docs:
+    uses: qiime2/distributions/.github/workflows/lib-build-docs.yaml@lib-build-docs-pdf
+    with:
+      rtd-slug: developing-with-qiime-2
+      book-dir: book
+      # latexmk -f keeps going past LaTeX errors, as RTD's PDF build does
+      pdf-command: |
+        Q2DOC_BASE_COMMAND='qiime' jupyter-book build book/ --builder latex
+        cd book/_build/latex
+        latexmk -pdf -f -dvi- -ps- -interaction=nonstopmode book.tex || test -f book.pdf
+      pdf-path: book/_build/latex/book.pdf
+      canonical-url: ${{ inputs.canonical-url }}
+    secrets:
+      rtd-token: ${{ secrets.DWQ2_PAT }}
